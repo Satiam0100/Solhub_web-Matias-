@@ -2,22 +2,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Icon from '../AppIcon';
+import Button from '../ui/Button';
+import { FaInstagram, FaLinkedin } from 'react-icons/fa';
 
 const Footer = ({ variant = 'default' }) => {
   const currentYear = new Date()?.getFullYear();
 
   const navigationSections = {
     solhub: [
-      { name: 'Soluciones', path: '/modules-showcase' },
-      { name: 'IA Center', path: '/ai-intelligence-center' },
-      { name: 'Seguridad', path: '/security-fortress' },
-      { name: 'Precios', path: '/pricing-calculator' }
+      { name: 'Soluciones', path: '/modules-showcase', icon: 'Grid3X3' },
+      { name: 'IA Center', path: '/ai-intelligence-center', icon: 'Brain' },
+      { name: 'Seguridad', path: '/security-fortress', icon: 'Shield' },
+      { name: 'Precios', path: '/pricing-calculator', icon: 'DollarSign' }
     ],
     contact: [
-      { name: 'Solicitar Demo', path: '/demo-experience' },
-      { name: 'WhatsApp', href: 'https://wa.me/584129974533', external: true },
-      { name: 'Instagram', href: 'https://www.instagram.com/solware_/?igsh=MTg4OTdwM3k3d2o4cA%3D%3D#', external: true },
-      { name: 'LinkedIn', href: 'https://www.linkedin.com/company/agencia-solware/', external: true }
+      { name: 'Solicitar Demo', path: '/demo-experience', icon: 'Play' },
+      { name: 'WhatsApp', href: 'https://wa.me/584129974533', external: true, icon: 'MessageCircle' },
+      { name: 'Instagram', href: 'https://www.instagram.com/solware_/?igsh=MTg4OTdwM3k3d2o4cA%3D%3D#', external: true, icon: 'instagram' },
+      { name: 'LinkedIn', href: 'https://www.linkedin.com/company/agencia-solware/', external: true, icon: 'linkedin' }
     ]
   };
 
@@ -74,7 +76,7 @@ const Footer = ({ variant = 'default' }) => {
       <div className="container-medical">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
-          <div className="md:col-span-2 lg:col-span-2 text-center md:text-left">
+          <div className="md:col-span-2 lg:col-span-2 text-center md:text-left md:ml-[80px]">
             <motion.div 
               className="flex items-center justify-center md:justify-start space-x-3 mb-6"
               variants={footerVariants}
@@ -86,7 +88,7 @@ const Footer = ({ variant = 'default' }) => {
               />
             </motion.div>
             <motion.p 
-              className="text-muted-foreground mb-6 max-w-md mx-auto md:mx-0 text-sm sm:text-base"
+              className="text-muted-foreground mb-6 max-w-md mx-auto md:mx-0 text-sm sm:text-base text-justify"
               variants={footerVariants}
             >
               Transformando laboratorios médicos en Venezuela con tecnología de vanguardia, 
@@ -97,49 +99,96 @@ const Footer = ({ variant = 'default' }) => {
 
           {/* Quick Links */}
           <motion.div variants={footerVariants} className="text-center md:text-left">
-            <h3 className="font-semibold text-foreground mb-4">SolHub</h3>
-            <ul className="space-y-2">
+            <motion.h3 
+              className="font-semibold text-foreground mb-4 text-xl sm:text-2xl cursor-default"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              SolHub
+            </motion.h3>
+            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
               {navigationSections?.solhub?.map((item) => (
-                <li key={item?.path}>
-                  <Link 
-                    to={item?.path} 
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm hover:underline"
+                <Link key={item?.path} to={item?.path}>
+                  <Button
+                    variant="ghost"
+                    size="lg"
+                    iconName={item?.icon}
+                    iconPosition="left"
+                    iconSize={24}
+                    className="text-muted-foreground hover:text-primary hover:bg-primary/10 text-sm sm:text-base py-3 px-4"
                   >
                     {item?.name}
-                  </Link>
-                </li>
+                  </Button>
+                </Link>
               ))}
-            </ul>
+            </div>
           </motion.div>
 
           {/* Contact */}
           <motion.div variants={footerVariants} className="text-center md:text-left">
-            <h3 className="font-semibold text-foreground mb-4">Contacto</h3>
-            <ul className="space-y-2">
+            <motion.h3 
+              className="font-semibold text-foreground mb-4 text-xl sm:text-2xl cursor-default"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
+            >
+              Contacto
+            </motion.h3>
+            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
               {navigationSections?.contact?.map((item) => (
-                <li key={item?.path || item?.href}>
+                <div key={item?.path || item?.href}>
                   {item?.external ? (
                     <a 
                       href={item?.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`text-muted-foreground transition-colors text-sm hover:underline ${
-                        item?.name === 'WhatsApp' ? 'hover:text-success' : 'hover:text-primary'
-                      }`}
                     >
-                      {item?.name}
+                      {item?.icon === 'instagram' || item?.icon === 'linkedin' ? (
+                        <Button
+                          variant="ghost"
+                          size="lg"
+                          className={`text-muted-foreground hover:bg-primary/10 text-sm sm:text-base py-3 px-4 ${
+                            item?.name === 'WhatsApp' ? 'hover:text-success' : 'hover:text-primary'
+                          }`}
+                        >
+                          {item?.icon === 'instagram' ? (
+                            <FaInstagram className="w-6 h-6 mr-2" />
+                          ) : (
+                            <FaLinkedin className="w-6 h-6 mr-2" />
+                          )}
+                          {item?.name}
+                        </Button>
+                      ) : (
+                        <Button
+                          variant="ghost"
+                          size="lg"
+                          iconName={item?.icon}
+                          iconPosition="left"
+                          iconSize={24}
+                          className={`text-muted-foreground hover:bg-primary/10 text-sm sm:text-base py-3 px-4 ${
+                            item?.name === 'WhatsApp' ? 'hover:text-success' : 'hover:text-primary'
+                          }`}
+                        >
+                          {item?.name}
+                        </Button>
+                      )}
                     </a>
                   ) : (
-                    <Link 
-                      to={item?.path} 
-                      className="text-muted-foreground hover:text-primary transition-colors text-sm hover:underline"
-                    >
-                      {item?.name}
+                    <Link to={item?.path}>
+                      <Button
+                        variant="ghost"
+                        size="lg"
+                        iconName={item?.icon}
+                        iconPosition="left"
+                        iconSize={24}
+                        className="text-muted-foreground hover:text-primary hover:bg-primary/10 text-sm sm:text-base py-3 px-4"
+                      >
+                        {item?.name}
+                      </Button>
                     </Link>
                   )}
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           </motion.div>
         </div>
 
@@ -160,21 +209,47 @@ const Footer = ({ variant = 'default' }) => {
             </a>
             . Todos los derechos reservados.
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-muted-foreground">
-            <Link to="/legal/privacidad" className="hover:text-primary transition-colors hover:underline">
-              Privacidad
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4">
+            <Link to="/legal/privacidad">
+              <Button
+                variant="ghost"
+                size="sm"
+                iconName="Lock"
+                iconPosition="left"
+                iconSize={20}
+                className="text-muted-foreground hover:text-primary hover:bg-primary/10 text-sm py-2 px-3"
+              >
+                Privacidad
+              </Button>
             </Link>
-            <Link to="/legal/terminos" className="hover:text-primary transition-colors hover:underline">
-              Términos
+            <Link to="/legal/terminos">
+              <Button
+                variant="ghost"
+                size="sm"
+                iconName="FileText"
+                iconPosition="left"
+                iconSize={20}
+                className="text-muted-foreground hover:text-primary hover:bg-primary/10 text-sm py-2 px-3"
+              >
+                Términos
+              </Button>
             </Link>
-            <span className="hidden sm:inline">•</span>
+            <span className="hidden sm:inline text-muted-foreground">•</span>
             <a 
               href="https://www.solware.agency" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="hover:text-primary transition-colors font-medium hover:underline"
             >
-              Solware Agency
+              <Button
+                variant="ghost"
+                size="sm"
+                iconName="ExternalLink"
+                iconPosition="left"
+                iconSize={20}
+                className="text-muted-foreground hover:text-primary hover:bg-primary/10 text-sm font-medium py-2 px-3"
+              >
+                Solware Agency
+              </Button>
             </a>
           </div>
         </motion.div>

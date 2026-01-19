@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Image from '../../../components/AppImage';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 
 const StoryModal = ({ story, isOpen, onClose }) => {
   if (!isOpen || !story) return null;
+
+  const modalRef = useRef(null);
+  const runId = 'run1';
 
   const implementationSteps = [
     {
@@ -39,9 +42,99 @@ const StoryModal = ({ story, isOpen, onClose }) => {
     }
   ];
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const bodyOverflow = document?.body?.style?.overflow || 'unset';
+    const modalEl = modalRef.current;
+    const sizes = modalEl
+      ? {
+          clientHeight: modalEl.clientHeight,
+          scrollHeight: modalEl.scrollHeight,
+          offsetHeight: modalEl.offsetHeight,
+          viewportHeight: window.innerHeight
+        }
+      : null;
+
+    // #region agent log
+    fetch('http://127.0.0.1:7243/ingest/a9fa691f-1132-4a32-8e02-929cf468f284', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        sessionId: 'debug-session',
+        runId,
+        hypothesisId: 'H1',
+        location: 'StoryModal.jsx:modal-open',
+        message: 'Modal open state and body overflow',
+        data: { bodyOverflow, isOpen },
+        timestamp: Date.now()
+      })
+    }).catch(() => {});
+    // #endregion
+
+    // #region agent log
+    fetch('http://127.0.0.1:7243/ingest/a9fa691f-1132-4a32-8e02-929cf468f284', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        sessionId: 'debug-session',
+        runId,
+        hypothesisId: 'H2',
+        location: 'StoryModal.jsx:size-check',
+        message: 'Modal size vs viewport',
+        data: sizes,
+        timestamp: Date.now()
+      })
+    }).catch(() => {});
+    // #endregion
+  }, [isOpen]);
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-md">
-      <div className="bg-card border border-border rounded-2xl shadow-2xl max-w-4xl w-full">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-md overflow-y-auto"
+      onClick={(e) => {
+        // #region agent log
+        fetch('http://127.0.0.1:7243/ingest/a9fa691f-1132-4a32-8e02-929cf468f284', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sessionId: 'debug-session',
+            runId,
+            hypothesisId: 'H3',
+            location: 'StoryModal.jsx:overlay-click',
+            message: 'Overlay clicked (outside modal) -> closing',
+            data: { tagName: e?.target?.tagName },
+            timestamp: Date.now()
+          })
+        }).catch(() => {});
+        // #endregion
+        onClose?.();
+      }}
+      role="button"
+      tabIndex={-1}
+      aria-label="Cerrar modal"
+    >
+      <div
+        ref={modalRef}
+        className="bg-card border border-border rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto my-auto"
+        onClick={(e) => {
+          // #region agent log
+          fetch('http://127.0.0.1:7243/ingest/a9fa691f-1132-4a32-8e02-929cf468f284', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              sessionId: 'debug-session',
+              runId,
+              hypothesisId: 'H3',
+              location: 'StoryModal.jsx:modal-click',
+              message: 'Modal content clicked (stopPropagation)',
+              data: { tagName: e?.target?.tagName },
+              timestamp: Date.now()
+            })
+          }).catch(() => {});
+          // #endregion
+          e.stopPropagation();
+        }}
+      >
         {/* Header */}
         <div className="relative">
           <Image

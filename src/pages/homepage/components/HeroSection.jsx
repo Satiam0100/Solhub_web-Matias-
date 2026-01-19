@@ -83,14 +83,14 @@ const HeroSection = () => {
 
           {/* Columna derecha: Video destacado */}
           <div className="order-1 lg:order-2 animate-fade-in flex justify-center lg:justify-end" style={{ animationDelay: '0.3s' }}>
-            <div className="relative rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl border border-border/50 bg-card/50 backdrop-blur-sm w-full max-w-[50%] lg:max-w-[55%]">
+            <div className="relative rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl border border-border/50 bg-card/50 backdrop-blur-sm w-[85%] sm:w-[75%] md:w-[65%] lg:w-full lg:max-w-[55%] aspect-[9/16] lg:aspect-auto">
               <video
                 controls
                 autoPlay
                 muted
                 loop
                 playsInline
-                className="w-full h-auto"
+                className="w-full h-full object-cover lg:object-contain"
               >
                 <source
                   src="https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/videos/SolHoub/Conspat%20x%20Solware%20(1)%20(1).mp4"

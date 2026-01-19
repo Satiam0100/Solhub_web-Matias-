@@ -70,11 +70,11 @@ const WhatsAppButtonSolware = memo(() => {
         }
 
         .instagram-btn-solware:hover {
-          transform: translateY(-50%) translateX(56px) scale(1.1) !important;
+          transform: translateY(-50%) translateX(70px) scale(1.1) !important;
         }
 
         .linkedin-btn-solware:hover {
-          transform: translateY(-50%) translateX(96px) scale(1.1) !important;
+          transform: translateY(-50%) translateX(120px) scale(1.1) !important;
         }
 
         /* Animaciones de salida suaves cuando se quita el hover manual */
@@ -94,13 +94,13 @@ const WhatsAppButtonSolware = memo(() => {
         }
 
         .instagram-btn-solware {
-          --final-x: 56px;
+          --final-x: 70px;
           --final-y: 0px;
           will-change: transform, opacity;
           transition: opacity 0.3s ease-out, transform 0.3s ease-out;
         }
         .linkedin-btn-solware {
-          --final-x: 96px;
+          --final-x: 120px;
           --final-y: 0px;
           will-change: transform, opacity;
           transition: opacity 0.3s ease-out, transform 0.3s ease-out;
@@ -116,11 +116,11 @@ const WhatsAppButtonSolware = memo(() => {
             opacity: 0;
           }
           60% {
-            transform: translateY(-50%) translateX(60px) scale(1.15) rotate(-10deg);
+            transform: translateY(-50%) translateX(75px) scale(1.15) rotate(-10deg);
             opacity: 0.9;
           }
           100% {
-            transform: translateY(-50%) translateX(56px) scale(1) rotate(0deg);
+            transform: translateY(-50%) translateX(70px) scale(1) rotate(0deg);
             opacity: 1;
           }
         }
@@ -131,40 +131,40 @@ const WhatsAppButtonSolware = memo(() => {
             opacity: 0;
           }
           60% {
-            transform: translateY(-50%) translateX(100px) scale(1.2) rotate(-15deg);
+            transform: translateY(-50%) translateX(125px) scale(1.2) rotate(-15deg);
             opacity: 0.9;
           }
           100% {
-            transform: translateY(-50%) translateX(96px) scale(1) rotate(0deg);
+            transform: translateY(-50%) translateX(120px) scale(1) rotate(0deg);
             opacity: 1;
           }
         }
 
         @keyframes matryoshka-stay-ig-solware {
           0%, 100% {
-            transform: translateY(-50%) translateX(56px) scale(1) rotate(0deg);
+            transform: translateY(-50%) translateX(70px) scale(1) rotate(0deg);
             opacity: 1;
           }
         }
 
         @keyframes matryoshka-stay-ln-solware {
           0%, 100% {
-            transform: translateY(-50%) translateX(96px) scale(1) rotate(0deg);
+            transform: translateY(-50%) translateX(120px) scale(1) rotate(0deg);
             opacity: 1;
           }
         }
 
         @keyframes matryoshka-exit-ig-solware {
           0% {
-            transform: translateY(-50%) translateX(56px) scale(1) rotate(0deg);
+            transform: translateY(-50%) translateX(70px) scale(1) rotate(0deg);
             opacity: 1;
           }
           30% {
-            transform: translateY(-50%) translateX(58px) scale(1.1) rotate(5deg);
+            transform: translateY(-50%) translateX(72px) scale(1.1) rotate(5deg);
             opacity: 0.95;
           }
           70% {
-            transform: translateY(-50%) translateX(54px) scale(0.5) rotate(90deg);
+            transform: translateY(-50%) translateX(60px) scale(0.5) rotate(90deg);
             opacity: 0.5;
           }
           100% {
@@ -175,15 +175,15 @@ const WhatsAppButtonSolware = memo(() => {
 
         @keyframes matryoshka-exit-ln-solware {
           0% {
-            transform: translateY(-50%) translateX(96px) scale(1) rotate(0deg);
+            transform: translateY(-50%) translateX(120px) scale(1) rotate(0deg);
             opacity: 1;
           }
           30% {
-            transform: translateY(-50%) translateX(98px) scale(1.1) rotate(8deg);
+            transform: translateY(-50%) translateX(122px) scale(1.1) rotate(8deg);
             opacity: 0.95;
           }
           70% {
-            transform: translateY(-50%) translateX(54px) scale(0.5) rotate(135deg);
+            transform: translateY(-50%) translateX(60px) scale(0.5) rotate(135deg);
             opacity: 0.5;
           }
           100% {
@@ -196,7 +196,7 @@ const WhatsAppButtonSolware = memo(() => {
         @media (max-width: 768px) {
           /* Área invisible ajustada para móvil - expandida hacia arriba */
           .matryoshka-group-solware .hover-area-solware {
-            top: -130px !important;
+            top: -150px !important;
             right: -5px !important;
             bottom: -5px !important;
             left: -5px !important;
@@ -218,11 +218,11 @@ const WhatsAppButtonSolware = memo(() => {
 
           /* Hover states para móvil */
           .instagram-btn-solware:hover {
-            transform: translateX(-50%) translateY(-56px) scale(1.1) !important;
+            transform: translateX(-50%) translateY(-70px) scale(1.1) !important;
           }
 
           .linkedin-btn-solware:hover {
-            transform: translateX(-50%) translateY(-88px) scale(1.1) !important;
+            transform: translateX(-50%) translateY(-110px) scale(1.1) !important;
           }
 
           /* Animaciones de salida suaves para móvil cuando se quita el hover manual */
@@ -244,11 +244,11 @@ const WhatsAppButtonSolware = memo(() => {
           /* Variables CSS para móvil */
           .instagram-btn-solware {
             --final-x: 0px;
-            --final-y: -56px;
+            --final-y: -70px;
           }
           .linkedin-btn-solware {
             --final-x: 0px;
-            --final-y: -88px;
+            --final-y: -110px;
           }
 
           /* MOBILE ANIMATIONS - hacia arriba */
@@ -258,11 +258,11 @@ const WhatsAppButtonSolware = memo(() => {
               opacity: 0;
             }
             60% {
-              transform: translateX(-50%) translateY(-60px) scale(1.15) rotate(-10deg);
+              transform: translateX(-50%) translateY(-75px) scale(1.15) rotate(-10deg);
               opacity: 0.9;
             }
             100% {
-              transform: translateX(-50%) translateY(-56px) scale(1) rotate(0deg);
+              transform: translateX(-50%) translateY(-70px) scale(1) rotate(0deg);
               opacity: 1;
             }
           }
@@ -273,40 +273,40 @@ const WhatsAppButtonSolware = memo(() => {
               opacity: 0;
             }
             60% {
-              transform: translateX(-50%) translateY(-92px) scale(1.2) rotate(-15deg);
+              transform: translateX(-50%) translateY(-115px) scale(1.2) rotate(-15deg);
               opacity: 0.9;
             }
             100% {
-              transform: translateX(-50%) translateY(-88px) scale(1) rotate(0deg);
+              transform: translateX(-50%) translateY(-110px) scale(1) rotate(0deg);
               opacity: 1;
             }
           }
 
           @keyframes matryoshka-stay-ig-solware-mobile {
             0%, 100% {
-              transform: translateX(-50%) translateY(-56px) scale(1) rotate(0deg);
+              transform: translateX(-50%) translateY(-70px) scale(1) rotate(0deg);
               opacity: 1;
             }
           }
 
           @keyframes matryoshka-stay-ln-solware-mobile {
             0%, 100% {
-              transform: translateX(-50%) translateY(-88px) scale(1) rotate(0deg);
+              transform: translateX(-50%) translateY(-110px) scale(1) rotate(0deg);
               opacity: 1;
             }
           }
 
           @keyframes matryoshka-exit-ig-solware-mobile {
             0% {
-              transform: translateX(-50%) translateY(-56px) scale(1) rotate(0deg);
+              transform: translateX(-50%) translateY(-70px) scale(1) rotate(0deg);
               opacity: 1;
             }
             30% {
-              transform: translateX(-50%) translateY(-58px) scale(1.1) rotate(5deg);
+              transform: translateX(-50%) translateY(-72px) scale(1.1) rotate(5deg);
               opacity: 0.95;
             }
             70% {
-              transform: translateX(-50%) translateY(-40px) scale(0.5) rotate(90deg);
+              transform: translateX(-50%) translateY(-47px) scale(0.5) rotate(90deg);
               opacity: 0.5;
             }
             100% {
@@ -317,15 +317,15 @@ const WhatsAppButtonSolware = memo(() => {
 
           @keyframes matryoshka-exit-ln-solware-mobile {
             0% {
-              transform: translateX(-50%) translateY(-88px) scale(1) rotate(0deg);
+              transform: translateX(-50%) translateY(-110px) scale(1) rotate(0deg);
               opacity: 1;
             }
             30% {
-              transform: translateX(-50%) translateY(-90px) scale(1.1) rotate(8deg);
+              transform: translateX(-50%) translateY(-112px) scale(1.1) rotate(8deg);
               opacity: 0.95;
             }
             70% {
-              transform: translateX(-50%) translateY(-56px) scale(0.5) rotate(135deg);
+              transform: translateX(-50%) translateY(-70px) scale(0.5) rotate(135deg);
               opacity: 0.5;
             }
             100% {
@@ -342,7 +342,7 @@ const WhatsAppButtonSolware = memo(() => {
         onMouseLeave={handleMouseLeave}
       >
         {/* Área invisible para mantener hover - ajustada según dispositivo */}
-        <div className="hover-area-solware absolute -top-5 -bottom-5 -left-5 -right-32 pointer-events-auto"></div>
+        <div className="hover-area-solware absolute -top-5 -bottom-5 -left-5 -right-[140px] pointer-events-auto"></div>
         
         {/* Botón principal de WhatsApp */}
         <button
